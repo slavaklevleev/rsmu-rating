@@ -1,17 +1,21 @@
 import React from "react";
 
+const RESULT_INTERPRETETION_STYLE = {
+  textAlign: "justify",
+};
+
 const Result = ({ score }) => {
   console.log(score);
   if (score === ":)") {
     return (
-      <p>
+      <p style={RESULT_INTERPRETETION_STYLE}>
         Нужно просто прийти на экзамен и сдать его на минимальный балл (70% за
         экзамен и вычитание 2% из итогового рейтинга)
       </p>
     );
   } else if (score < 70) {
     return (
-      <p>
+      <p style={RESULT_INTERPRETETION_STYLE}>
         Может быть, если получить за ответ на экзамене от 21 Б с ВК (70,00% за
         ответ) до 23 Б с ВК (76,66% за ответ). В этом случае у Вас преподаватель
         может вычесть 2% из итогового рейтинга и в строке экзамена окажется
@@ -19,10 +23,10 @@ const Result = ({ score }) => {
       </p>
     );
   } else if (score >= 70 && score <= 100) {
-    return <p>Баллы за экзамен. Соответствует диапазону от 21 до 30 Б с ВК.</p>;
+    return <p style={RESULT_INTERPRETETION_STYLE}>Баллы за экзамен. Соответствует диапазону от 21 до 30 Б с ВК.</p>;
   } else if (score > 100) {
     return (
-      <p>
+      <p style={RESULT_INTERPRETETION_STYLE}>
         Может быть, если получить за ответ на экзамене 100%, написать тест при
         его наличии на 90%, а преподаватель согласен добавить Вам к итоговому
         рейтингу 2%. В этом случае за экзамен Вы можете получить до 32 Б с ВК.
@@ -30,7 +34,7 @@ const Result = ({ score }) => {
     );
   } else {
     return (
-      <p>
+      <p style={RESULT_INTERPRETETION_STYLE}>
         Вы не можете получить оценку, даже если сдадите экзамен на 100% и
         преподаватель согласится повысить ваш итоговый рейтинг на 2%.
       </p>

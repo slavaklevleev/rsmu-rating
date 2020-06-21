@@ -10,6 +10,13 @@ import Table from "./Table";
 // --- Стили
 //---------------------------------------------------------------------
 
+const RESULT_STYLE = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-around",
+  flexWrap: "wrap",
+};
+
 class Calculator extends React.Component {
   constructor(props) {
     super(props);
@@ -235,7 +242,7 @@ class Calculator extends React.Component {
           onCoefficientChange={this.CoefficientChangeHandle}
         />
 
-        <div>
+        <div style={RESULT_STYLE}>
           <Result
             mark="5"
             score={this.ExamScoreCount(
