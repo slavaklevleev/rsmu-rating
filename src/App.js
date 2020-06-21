@@ -1,11 +1,11 @@
 import React from "react";
-import Calculator from "./components/Calculator";
+import CalculatorController from "./components/TermGradeCalc/CalculatorController";
 
 function App() {
   return (
     <div className="App">
       {/* <InfoBlock /> */}
-      <Calculator />
+      <CalculatorController />
     </div>
   );
 }
