@@ -1,5 +1,6 @@
 import React from "react";
 import ResultInterpretetion from "./ResultInterpretetion";
+import Indicator from "./Indicator"
 
 const BLOCK_STYLE = {
   border: "2px solid silver",
@@ -46,6 +47,7 @@ const Result = ({ mark, score, scoreWithCoeff }) => (
             Балл за экзамен c учетом <br /> вессового коэффициента
           </p>
           <p>{scoreWithCoeff}</p>
+          <Indicator score = {scoreWithCoeff} />
         </div>
       </div>
     </div>

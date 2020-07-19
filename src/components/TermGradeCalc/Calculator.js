@@ -2,19 +2,42 @@ import React from "react";
 import CalculatorForm from "./CalculatorForm";
 import Result from "./Result";
 import Table from "./Table";
+import Indicator from "./Indicator";
 
 //--------------------------------TO-DO--------------------------------
 // --- Предупреддение о том, что сумма коэфф > 1
 // --- Предупреждение о том, что количество семместров макс или мин
-// --- Изменение цветов
-// --- Стили
 //---------------------------------------------------------------------
 
 const RESULT_STYLE = {
   display: "flex",
   flexDirection: "row",
-  justifyContent: "space-around",
+  justifyContent: "center",
   flexWrap: "wrap",
+};
+
+const COLOR_EXPLAIN = {
+  display: "flex",
+  margin: "0px 10px",
+  flexDirection: "row",
+  alignItems: "center",
+  width: "max-content",
+};
+
+const COLOR_EXPLAIN_BLOCK = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  margin: "auto",
+};
+
+const COLOR_EXPLAIN_INNER_BLOCK = {
+  width: "80%",
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  justifyContent: "space-around",
+  margin: "auto",
 };
 
 class Calculator extends React.Component {
@@ -266,6 +289,24 @@ class Calculator extends React.Component {
               this.ExamScoreWithCoeffCount(termsInfo) - 20
             ).toFixed(2)}
           />
+        </div>
+
+        <div style={COLOR_EXPLAIN_BLOCK}>
+          <h3>Пояснение к цветам</h3>
+          <div style={COLOR_EXPLAIN_INNER_BLOCK}>
+            <div style={COLOR_EXPLAIN}>
+              <Indicator score={25} />
+              <p>— баллы можно получить без изменения ИР на 2%</p>
+            </div>
+            <div style={COLOR_EXPLAIN}>
+              <Indicator score={20} />
+              <p>— баллы можно получить с изменением ИР на 2%</p>
+            </div>
+            <div style={COLOR_EXPLAIN}>
+              <Indicator score={18} />
+              <p>— такое количество баллов нельзя получить. Никак</p>
+            </div>
+          </div>
         </div>
       </div>
     );
