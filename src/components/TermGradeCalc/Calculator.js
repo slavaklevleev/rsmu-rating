@@ -3,11 +3,7 @@ import CalculatorForm from "./CalculatorForm";
 import Result from "./Result";
 import Table from "./Table";
 import Indicator from "./Indicator";
-
-//--------------------------------TO-DO--------------------------------
-// --- Предупреддение о том, что сумма коэфф > 1
-// --- Предупреждение о том, что количество семместров макс или мин
-//---------------------------------------------------------------------
+import Alert from "react-s-alert";
 
 const RESULT_STYLE = {
   display: "flex",
@@ -47,6 +43,7 @@ class Calculator extends React.Component {
     this.RemoveTermButtonHandle = this.RemoveTermButtonHandle.bind(this);
     this.ScoreChangeHandle = this.ScoreChangeHandle.bind(this);
     this.CoefficientChangeHandle = this.CoefficientChangeHandle.bind(this);
+    this.CoefficientBlurHandle = this.CoefficientBlurHandle.bind(this);
     this.CanBeDowngradeHandle = this.CanBeDowngradeHandle.bind(this);
     this.CanBeIncreasedHandle = this.CanBeIncreasedHandle.bind(this);
 
@@ -172,7 +169,11 @@ class Calculator extends React.Component {
       });
       console.log(this.state.termsInfo);
     } else {
-      //Выдать ошибку
+      Alert.warning("В таблице максимальное количество семестров", {
+        position: "top-right",
+        effect: "slide",
+        timeout: 5000,
+      });
     }
   }
 
@@ -196,53 +197,112 @@ class Calculator extends React.Component {
 
       console.log(this.state.termsInfo);
     } else {
-      //Выдать ошибку
+      Alert.warning("В таблице минимальное количество семестров", {
+        position: "top-right",
+        effect: "slide",
+        timeout: 5000,
+      });
     }
   }
 
   ScoreChangeHandle(score, id) {
     console.log(this.state.termsInfo);
-    if (score <= 100 && score >= 0) {
-      const { termsInfo } = this.state;
-      const newTermsInfo = [...termsInfo];
-      newTermsInfo[id].score = score;
+    const { termsInfo } = this.state;
+    const newTermsInfo = [...termsInfo];
 
-      newTermsInfo[id].scoreWithCoeff = this.scoreWithCoeffCount(
-        newTermsInfo[id].score,
-        newTermsInfo[id].coefficient1,
-        newTermsInfo[id].coefficient2
-      );
+    if (score > 100) {
+      Alert.error("Количество баллов не может быть больше 100", {
+        position: "top-right",
+        effect: "slide",
+        timeout: 5000,
+      });
 
-      this.setState({ termsInfo: newTermsInfo });
-    } else {
-      //ошибка
+      score = 100;
     }
+
+    if (score < 0) {
+      Alert.error("Количество баллов не может быть меньше 0", {
+        position: "top-right",
+        effect: "slide",
+        timeout: 5000,
+      });
+
+      score = 0;
+    }
+
+    newTermsInfo[id].score = score;
+
+    newTermsInfo[id].scoreWithCoeff = this.scoreWithCoeffCount(
+      newTermsInfo[id].score,
+      newTermsInfo[id].coefficient1,
+      newTermsInfo[id].coefficient2
+    );
+
+    this.setState({ termsInfo: newTermsInfo });
   }
 
   CoefficientChangeHandle(coefficient, index) {
-    if (coefficient <= 1 && coefficient >= 0) {
-      const { termsInfo } = this.state;
-      const newTermsInfo = [...termsInfo];
-      newTermsInfo[index].coefficient1 = coefficient;
+    const { termsInfo } = this.state;
+    const newTermsInfo = [...termsInfo];
 
-      //проверка на сумму > 1
-      let count = 0;
-      for (let i = 0; i < newTermsInfo.length; i++) {
-        count += Number(newTermsInfo[i].coefficient1);
-      }
+    if (coefficient > 1) {
+      Alert.error("Коэффициент не может быть больше 1", {
+        position: "top-right",
+        effect: "slide",
+        timeout: 5000,
+      });
 
-      // if (count > 1) {
-      //   newTermsInfo[index].coefficient1 = 0;
-      // }
-      newTermsInfo[index].scoreWithCoeff = this.scoreWithCoeffCount(
-        newTermsInfo[index].score,
-        newTermsInfo[index].coefficient1,
-        newTermsInfo[index].coefficient2
-      );
-      this.setState({ termsInfo: newTermsInfo });
-    } else {
-      //ошитбка
+      coefficient = 1;
     }
+
+    if (coefficient < 0) {
+      Alert.error("Коэффициент не может быть меньше 0", {
+        position: "top-right",
+        effect: "slide",
+        timeout: 5000,
+      });
+
+      coefficient = 0;
+    }
+
+    newTermsInfo[index].coefficient1 = coefficient;
+    newTermsInfo[index].scoreWithCoeff = this.scoreWithCoeffCount(
+      newTermsInfo[index].score,
+      newTermsInfo[index].coefficient1,
+      newTermsInfo[index].coefficient2
+    );
+    this.setState({ termsInfo: newTermsInfo });
+  }
+
+  CoefficientBlurHandle(coefficient, index) {
+    const { termsInfo } = this.state;
+    const newTermsInfo = [...termsInfo];
+
+    let count = 0;
+    for (let i = 0; i < newTermsInfo.length; i++) {
+      count += Number(newTermsInfo[i].coefficient1);
+    }
+
+    if (count > 1) {
+      console.log("blur");
+
+      Alert.error("Сумма коэффициентов не может быть больше 1", {
+        position: "top-right",
+        effect: "slide",
+        timeout: 5000,
+      });
+
+      coefficient = 0;
+    }
+
+    newTermsInfo[index].coefficient1 = coefficient;
+
+    newTermsInfo[index].scoreWithCoeff = this.scoreWithCoeffCount(
+      newTermsInfo[index].score,
+      newTermsInfo[index].coefficient1,
+      newTermsInfo[index].coefficient2
+    );
+    this.setState({ termsInfo: newTermsInfo });
   }
 
   render() {
@@ -263,6 +323,7 @@ class Calculator extends React.Component {
           termsInfo={termsInfo}
           onScoreChange={this.ScoreChangeHandle}
           onCoefficientChange={this.CoefficientChangeHandle}
+          onCoefficientBlur={this.CoefficientBlurHandle}
         />
 
         <div style={RESULT_STYLE}>

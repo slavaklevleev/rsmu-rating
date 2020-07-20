@@ -6,6 +6,7 @@ class Table extends React.Component {
     super(props);
     this.ScoreChangeHandle = this.ScoreChangeHandle.bind(this);
     this.CoefficientChangeHandle = this.CoefficientChangeHandle.bind(this);
+    this.CoefficientBlurHandle = this.CoefficientBlurHandle.bind(this);
   }
 
   ScoreChangeHandle(e) {
@@ -14,6 +15,10 @@ class Table extends React.Component {
   
   CoefficientChangeHandle(e) {
     this.props.onCoefficientChange(e.target.value, Number(e.target.id));
+  }
+
+  CoefficientBlurHandle(e) {
+    this.props.onCoefficientBlur(e.target.value, Number(e.target.id));
   }
 
   render() {
@@ -50,6 +55,7 @@ class Table extends React.Component {
                 type="text"
                 value={i.coefficient1}
                 onChange={this.CoefficientChangeHandle}
+                onBlur={this.CoefficientBlurHandle}
               />
             </td>
             <td>
