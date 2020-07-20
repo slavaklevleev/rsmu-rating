@@ -72,10 +72,6 @@ class Calculator extends React.Component {
       ExamScore =
         Math.round((ExamScore - termsInfo[index].scoreWithCoeff) * 10000) /
         10000;
-      console.log(
-        ExamScore,
-        Math.round(termsInfo[index].scoreWithCoeff * 10000) / 10000
-      );
     }
     return (Math.round(ExamScore * 100) / 100).toFixed(2);
   }
@@ -206,7 +202,6 @@ class Calculator extends React.Component {
   }
 
   ScoreChangeHandle(score, id) {
-    console.log(this.state.termsInfo);
     const { termsInfo } = this.state;
     const newTermsInfo = [...termsInfo];
 

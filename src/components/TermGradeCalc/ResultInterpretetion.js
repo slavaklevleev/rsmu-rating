@@ -5,7 +5,6 @@ const RESULT_INTERPRETETION_STYLE = {
 };
 
 const Result = ({ score }) => {
-  console.log(score);
   if (score === ":)") {
     return (
       <p style={RESULT_INTERPRETETION_STYLE}>
