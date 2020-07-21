@@ -9,6 +9,10 @@ const BLOCK_STYLE = {
   margin: "auto",
 };
 
+const BUTTON_BLOCK_STYLE = {
+  display: "flex",
+}
+
 const CHECKBOX_BLOCK_STYLE = {
   display: "flex",
   justifyContent: "center",
@@ -58,7 +62,7 @@ class CalculatorForm extends React.Component {
     return (
       <div className="termInfo" style={BLOCK_STYLE}>
         <p>Количество семестров: {TermNumber}</p>
-        <div>
+        <div style={BUTTON_BLOCK_STYLE}>
           <button onClick={this.AddTermButtonHandle}>Добавить семестр</button>
           <button onClick={this.RemoveTermButtonHandle}>Убрать семестр</button>
         </div>

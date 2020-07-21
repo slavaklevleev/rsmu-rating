@@ -38,6 +38,10 @@ const COLOR_EXPLAIN_INNER_BLOCK = {
   margin: "auto",
 };
 
+const EXPLANATION_STYLE = {
+  marginLeft: "10px",
+}
+
 const scoreWithCoeffCount = (score, coefficient1, coefficient2) => {
   return Math.round(score * coefficient1 * coefficient2 * 10000) / 10000;
 }
@@ -356,15 +360,15 @@ class Calculator extends React.Component {
           <div style={COLOR_EXPLAIN_INNER_BLOCK}>
             <div style={COLOR_EXPLAIN}>
               <Indicator score={25} />
-              <p>— баллы можно получить без изменения ИР на 2%</p>
+              <p style={EXPLANATION_STYLE}>— баллы можно получить без изменения ИР на 2%</p>
             </div>
             <div style={COLOR_EXPLAIN}>
               <Indicator score={20} />
-              <p>— баллы можно получить с изменением ИР на 2%</p>
+              <p style={EXPLANATION_STYLE}>— баллы можно получить с изменением ИР на 2%</p>
             </div>
             <div style={COLOR_EXPLAIN}>
               <Indicator score={18} />
-              <p>— такое количество баллов нельзя получить. Никак</p>
+              <p style={EXPLANATION_STYLE}>— такое количество баллов нельзя получить. Никак</p>
             </div>
           </div>
         </div>

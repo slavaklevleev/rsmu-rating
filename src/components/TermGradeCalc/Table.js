@@ -2,6 +2,14 @@ import React from "react";
 import "./Table.css";
 import PropTypes from "prop-types";
 
+const EXPLANATION_STYLE = {
+  textAlign: "center",
+}
+
+const INPUT_TEXT_STYLE = {
+  width: "60px",
+}
+
 class Table extends React.Component {
   constructor(props) {
     super(props);
@@ -24,50 +32,53 @@ class Table extends React.Component {
 
   render() {
     return (
-      <table>
-        <tr>
-          <th>Семестр №</th>
-          <th>Балл</th>
-          <th>Вессовой коэф. #1</th>
-          <th>Вессовой коэф. #2</th>
-          <th>Балл с учетом весовых коэф.</th>
-        </tr>
-
-        {this.props.termsInfo.map((i, index) => (
-          <tr key={i}>
-            <th>
-              <p>{i.num}</p>
-            </th>
-            <td>
-              <input
-                key={index}
-                className="TableInput"
-                id={index}
-                type="text"
-                value={i.score}
-                onChange={this.ScoreChangeHandle}
-              />
-            </td>
-            <td>
-              <input
-                key={index}
-                className="TableInput"
-                id={index}
-                type="text"
-                value={i.coefficient1}
-                onChange={this.CoefficientChangeHandle}
-                onBlur={this.CoefficientBlurHandle}
-              />
-            </td>
-            <td>
-              <p>{i.coefficient2}</p>
-            </td>
-            <td>
-              <p>{i.scoreWithCoeff.toFixed(2)}</p>
-            </td>
+      <div>
+        <p style={EXPLANATION_STYLE}>
+          Весовой коэффициент #2 равен <b>{this.props.termsInfo[0].coefficient2}</b>
+        </p>
+        <table>
+          <tr>
+            <th>Семестр №</th>
+            <th>Балл</th>
+            <th>Вессовой коэф. #1</th>
+            <th>Балл с учетом весовых коэф.</th>
           </tr>
-        ))}
-      </table>
+
+          {this.props.termsInfo.map((i, index) => (
+            <tr key={i}>
+              <th>
+                <p>{i.num}</p>
+              </th>
+              <td>
+                <input
+                  key={index}
+                  className="TableInput"
+                  id={index}
+                  type="text"
+                  style={INPUT_TEXT_STYLE}
+                  value={i.score}
+                  onChange={this.ScoreChangeHandle}
+                />
+              </td>
+              <td>
+                <input
+                  key={index}
+                  className="TableInput"
+                  id={index}
+                  type="text"
+                  style={INPUT_TEXT_STYLE}
+                  value={i.coefficient1}
+                  onChange={this.CoefficientChangeHandle}
+                  onBlur={this.CoefficientBlurHandle}
+                />
+              </td>
+              <td>
+                <p>{i.scoreWithCoeff.toFixed(2)}</p>
+              </td>
+            </tr>
+          ))}
+        </table>
+      </div>
     );
   }
 }

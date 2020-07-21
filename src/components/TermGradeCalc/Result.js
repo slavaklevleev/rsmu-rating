@@ -8,7 +8,7 @@ const BLOCK_STYLE = {
   borderRadius: "5px",
   padding: "15px",
   margin: "15px",
-  width: "min-content",
+  maxWidth: "420px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-around",
@@ -18,6 +18,7 @@ const BLOCK_STYLE = {
 const RESULT_BLOCK_STYLE = {
   display: "flex",
   flexDirection: "row",
+  flexWrap: "wrap",
   justifyContent: "space-around",
   alignItems: "center",
 };
