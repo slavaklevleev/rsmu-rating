@@ -5,6 +5,8 @@ import Table from "./Table";
 import Indicator from "./Indicator";
 import Alert from "react-s-alert";
 
+const EX_COEFF = 0.3;
+
 const RESULT_STYLE = {
   display: "flex",
   flexDirection: "row",
@@ -36,6 +38,72 @@ const COLOR_EXPLAIN_INNER_BLOCK = {
   margin: "auto",
 };
 
+const scoreWithCoeffCount = (score, coefficient1, coefficient2) => {
+  return Math.round(score * coefficient1 * coefficient2 * 10000) / 10000;
+}
+
+const ExamScoreWithCoeffCount = (termsInfo) => {
+  let ExamScore = 100;
+  for (let index = 0; index < termsInfo.length; index++) {
+    ExamScore =
+      Math.round((ExamScore - termsInfo[index].scoreWithCoeff) * 10000) /
+      10000;
+  }
+  return (Math.round(ExamScore * 100) / 100).toFixed(2);
+}
+
+//добавить изменяемый коэффициент2
+const ExamScoreCount = (x, CanBeDowngrade, CanBeIncreased, coeff2) => {
+  if (CanBeIncreased) {
+    //возможность повышения
+    if (CanBeDowngrade) {
+      //возможность понижения
+      if (x > 32) {
+        return ":(";
+      } else {
+        if (x <= 19) {
+          return ":)";
+        } else {
+          return (x / coeff2).toFixed(2);
+        }
+      }
+    } else {
+      if (x > 32) {
+        return ":(";
+      } else {
+        if (x <= 21) {
+          return ":)";
+        } else {
+          return (x / coeff2).toFixed(2);
+        }
+      }
+    }
+  } else {
+    if (CanBeDowngrade) {
+      //возможность понижения
+      if (x > 30) {
+        return ":(";
+      } else {
+        if (x <= 19) {
+          return ":)";
+        } else {
+          return (x / coeff2).toFixed(2);
+        }
+      }
+    } else {
+      if (x > 30) {
+        return ":(";
+      } else {
+        if (x <= 21) {
+          return ":)";
+        } else {
+          return (x / coeff2).toFixed(2);
+        }
+      }
+    }
+  }
+}
+
 class Calculator extends React.Component {
   constructor(props) {
     super(props);
@@ -53,78 +121,13 @@ class Calculator extends React.Component {
           num: 1,
           score: 0.0,
           coefficient1: 1.0,
-          coefficient2: 0.7,
+          coefficient2: 1 - EX_COEFF,
           scoreWithCoeff: 0.0,
         },
       ],
       CanBeDowngrade: false,
       CanBeIncreased: false,
     };
-  }
-
-  scoreWithCoeffCount(score, coefficient1, coefficient2) {
-    return Math.round(score * coefficient1 * coefficient2 * 10000) / 10000;
-  }
-
-  ExamScoreWithCoeffCount(termsInfo) {
-    let ExamScore = 100;
-    for (let index = 0; index < termsInfo.length; index++) {
-      ExamScore =
-        Math.round((ExamScore - termsInfo[index].scoreWithCoeff) * 10000) /
-        10000;
-    }
-    return (Math.round(ExamScore * 100) / 100).toFixed(2);
-  }
-
-  ExamScoreCount(x, CanBeDowngrade, CanBeIncreased) {
-    if (CanBeIncreased) {
-      //возможность повышения
-      if (CanBeDowngrade) {
-        //возможность понижения
-        if (x > 32) {
-          return ":(";
-        } else {
-          if (x <= 19) {
-            return ":)";
-          } else {
-            return (x / 0.3).toFixed(2);
-          }
-        }
-      } else {
-        if (x > 32) {
-          return ":(";
-        } else {
-          if (x <= 21) {
-            return ":)";
-          } else {
-            return (x / 0.3).toFixed(2);
-          }
-        }
-      }
-    } else {
-      if (CanBeDowngrade) {
-        //возможность понижения
-        if (x > 30) {
-          return ":(";
-        } else {
-          if (x <= 19) {
-            return ":)";
-          } else {
-            return (x / 0.3).toFixed(2);
-          }
-        }
-      } else {
-        if (x > 30) {
-          return ":(";
-        } else {
-          if (x <= 21) {
-            return ":)";
-          } else {
-            return (x / 0.3).toFixed(2);
-          }
-        }
-      }
-    }
   }
 
   CanBeIncreasedHandle(CanBeIncreased) {
@@ -147,13 +150,13 @@ class Calculator extends React.Component {
         num: termsInfo.length + 1,
         score: 0.0,
         coefficient1: 1,
-        coefficient2: 0.7,
+        coefficient2: 1 - EX_COEFF,
         scoreWithCoeff: 0.0,
       });
 
       for (let index = 0; index < termsInfo.length; index++) {
         termsInfo[index].coefficient1 = (1 / termsInfo.length).toFixed(4);
-        termsInfo[index].scoreWithCoeff = this.scoreWithCoeffCount(
+        termsInfo[index].scoreWithCoeff = scoreWithCoeffCount(
           termsInfo[index].score,
           termsInfo[index].coefficient1,
           termsInfo[index].coefficient2
@@ -163,7 +166,6 @@ class Calculator extends React.Component {
       this.setState({
         termsInfo: termsInfo,
       });
-      console.log(this.state.termsInfo);
     } else {
       Alert.warning("В таблице максимальное количество семестров", {
         position: "top-right",
@@ -180,7 +182,7 @@ class Calculator extends React.Component {
 
       for (let index = 0; index < termsInfo.length; index++) {
         termsInfo[index].coefficient1 = (1 / termsInfo.length).toFixed(4);
-        termsInfo[index].scoreWithCoeff = this.scoreWithCoeffCount(
+        termsInfo[index].scoreWithCoeff = scoreWithCoeffCount(
           termsInfo[index].score,
           termsInfo[index].coefficient1,
           termsInfo[index].coefficient2
@@ -190,8 +192,6 @@ class Calculator extends React.Component {
       this.setState({
         termsInfo: termsInfo,
       });
-
-      console.log(this.state.termsInfo);
     } else {
       Alert.warning("В таблице минимальное количество семестров", {
         position: "top-right",
@@ -227,7 +227,7 @@ class Calculator extends React.Component {
 
     newTermsInfo[id].score = score;
 
-    newTermsInfo[id].scoreWithCoeff = this.scoreWithCoeffCount(
+    newTermsInfo[id].scoreWithCoeff = scoreWithCoeffCount(
       newTermsInfo[id].score,
       newTermsInfo[id].coefficient1,
       newTermsInfo[id].coefficient2
@@ -261,7 +261,7 @@ class Calculator extends React.Component {
     }
 
     newTermsInfo[index].coefficient1 = coefficient;
-    newTermsInfo[index].scoreWithCoeff = this.scoreWithCoeffCount(
+    newTermsInfo[index].scoreWithCoeff = scoreWithCoeffCount(
       newTermsInfo[index].score,
       newTermsInfo[index].coefficient1,
       newTermsInfo[index].coefficient2
@@ -279,8 +279,6 @@ class Calculator extends React.Component {
     }
 
     if (count > 1) {
-      console.log("blur");
-
       Alert.error("Сумма коэффициентов не может быть больше 1", {
         position: "top-right",
         effect: "slide",
@@ -291,8 +289,12 @@ class Calculator extends React.Component {
     }
 
     newTermsInfo[index].coefficient1 = coefficient;
-
-    newTermsInfo[index].scoreWithCoeff = this.scoreWithCoeffCount(
+    console.log(scoreWithCoeffCount(
+      newTermsInfo[index].score,
+      newTermsInfo[index].coefficient1,
+      newTermsInfo[index].coefficient2
+    ));
+    newTermsInfo[index].scoreWithCoeff = scoreWithCoeffCount(
       newTermsInfo[index].score,
       newTermsInfo[index].coefficient1,
       newTermsInfo[index].coefficient2
@@ -324,25 +326,27 @@ class Calculator extends React.Component {
         <div style={RESULT_STYLE}>
           <Result
             mark="5"
-            score={this.ExamScoreCount(
-              this.ExamScoreWithCoeffCount(termsInfo) - 10,
+            score={ExamScoreCount(
+              ExamScoreWithCoeffCount(termsInfo) - 10,
               this.state.CanBeDowngrade,
-              this.state.CanBeIncreased
+              this.state.CanBeIncreased,
+              EX_COEFF
             )}
             scoreWithCoeff={(
-              this.ExamScoreWithCoeffCount(termsInfo) - 10
+              ExamScoreWithCoeffCount(termsInfo) - 10
             ).toFixed(2)}
           />
 
           <Result
             mark="4"
-            score={this.ExamScoreCount(
-              this.ExamScoreWithCoeffCount(termsInfo) - 20,
+            score={ExamScoreCount(
+              ExamScoreWithCoeffCount(termsInfo) - 20,
               this.state.CanBeDowngrade,
-              this.state.CanBeIncreased
+              this.state.CanBeIncreased,
+              EX_COEFF
             )}
             scoreWithCoeff={(
-              this.ExamScoreWithCoeffCount(termsInfo) - 20
+              ExamScoreWithCoeffCount(termsInfo) - 20
             ).toFixed(2)}
           />
         </div>
@@ -369,4 +373,4 @@ class Calculator extends React.Component {
   }
 }
 
-export default Calculator;
+export {Calculator, scoreWithCoeffCount, ExamScoreWithCoeffCount, ExamScoreCount};
