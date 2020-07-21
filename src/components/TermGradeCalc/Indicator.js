@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const Indicator = ({score}) => {
     let color;
@@ -26,6 +27,10 @@ const Indicator = ({score}) => {
     return (
         <div style={INDICATOR}></div>
     );
+}
+
+Indicator.propTypes = {
+    score: PropTypes.number,
 }
 
 export default Indicator;

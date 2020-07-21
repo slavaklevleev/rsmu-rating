@@ -1,5 +1,6 @@
 import React from "react";
 import "./Table.css";
+import PropTypes from "prop-types";
 
 class Table extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Table extends React.Component {
   ScoreChangeHandle(e) {
     this.props.onScoreChange(e.target.value, Number(e.target.id));
   }
-  
+
   CoefficientChangeHandle(e) {
     this.props.onCoefficientChange(e.target.value, Number(e.target.id));
   }
@@ -33,7 +34,7 @@ class Table extends React.Component {
         </tr>
 
         {this.props.termsInfo.map((i, index) => (
-          <tr>
+          <tr key={i}>
             <th>
               <p>{i.num}</p>
             </th>
@@ -70,5 +71,12 @@ class Table extends React.Component {
     );
   }
 }
+
+Table.propTypes = {
+  termsInfo: PropTypes.number,
+  onScoreChange: PropTypes.func,
+  onCoefficientChange: PropTypes.func,
+  onCoefficientBlur: PropTypes.func,
+};
 
 export default Table;
