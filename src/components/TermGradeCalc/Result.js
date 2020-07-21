@@ -1,6 +1,7 @@
 import React from "react";
 import ResultInterpretetion from "./ResultInterpretetion";
 import Indicator from "./Indicator"
+import PropTypes from 'prop-types';
 
 const BLOCK_STYLE = {
   border: "2px solid silver",
@@ -57,5 +58,12 @@ const Result = ({ mark, score, scoreWithCoeff }) => (
     </div>
   </div>
 );
+
+Result.propTypes = {
+  mark: PropTypes.number,
+  score: PropTypes.number,
+  scoreWithCoeff: PropTypes.number
+} 
+
 
 export default Result;

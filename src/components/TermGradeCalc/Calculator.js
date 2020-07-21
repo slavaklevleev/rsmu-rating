@@ -142,7 +142,7 @@ class Calculator extends React.Component {
     });
   }
 
-  AddTermButtonHandle(e) {
+  AddTermButtonHandle() {
     if (this.state.termsInfo.length < 5) {
       let termsInfo = this.state.termsInfo.slice(0);
 
@@ -175,7 +175,7 @@ class Calculator extends React.Component {
     }
   }
 
-  RemoveTermButtonHandle(e) {
+  RemoveTermButtonHandle() {
     if (this.state.termsInfo.length > 1) {
       let termsInfo = this.state.termsInfo.slice(0);
       termsInfo.pop();

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const BLOCK_STYLE = {
   display: "flex",
@@ -53,9 +54,10 @@ class CalculatorForm extends React.Component {
   }
 
   render() {
+    const {TermNumber, CanBeIncreased, CanBeDowngrade} = this.props
     return (
       <div className="termInfo" style={BLOCK_STYLE}>
-        <p>Количество семестров: {this.props.TermNumber}</p>
+        <p>Количество семестров: {TermNumber}</p>
         <div>
           <button onClick={this.AddTermButtonHandle}>Добавить семестр</button>
           <button onClick={this.RemoveTermButtonHandle}>Убрать семестр</button>
@@ -65,7 +67,7 @@ class CalculatorForm extends React.Component {
             {" "}
             <input
               type="Checkbox"
-              checked={this.props.CanBeIncreased}
+              checked={CanBeIncreased}
               style={CHECKBOX_STYLE}
               onChange={this.CanBeIncreasedHandle}
             />{" "}
@@ -77,7 +79,7 @@ class CalculatorForm extends React.Component {
             {" "}
             <input
               type="Checkbox"
-              checked={this.props.CanBeDowngrade}
+              checked={CanBeDowngrade}
               style={CHECKBOX_STYLE}
               onChange={this.CanBeDowngradeHandle}
             />{" "}
@@ -89,4 +91,13 @@ class CalculatorForm extends React.Component {
   }
 }
 
+CalculatorForm.propTypes = {
+  TermNumber: PropTypes.number,
+  CanBeDowngrade: PropTypes.bool,
+  CanBeIncreased: PropTypes.bool,
+  onAddTermButtonClick: PropTypes.func,
+  onRemoveTermButtonClick: PropTypes.func,
+  onCanBeDowngradeChange: PropTypes.func,
+  onCanBeIncreasedChange: PropTypes.func,
+}
 export default CalculatorForm;
