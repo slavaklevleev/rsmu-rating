@@ -1,0 +1,20 @@
+.checkboxBlock {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(4, max-content);
+  justify-content: center;
+  margin: auto;
+  border: 1px solid silver;
+}
+
+label {
+  flex-direction: row;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox {
+  margin: 5px;
+}

@@ -1,0 +1,46 @@
+.tableInput {
+  width: 75px;
+  text-align: center;
+}
+
+.tableScroll {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  margin: 15px auto;
+  overflow: auto;
+  background: white;
+}
+.tableScroll table {
+  margin: 15px auto;
+  width: fit-content;
+  border-spacing: 0px 10px;
+  table-layout: fixed;
+}
+.tableWrap {
+  position: relative;
+}
+
+.tableScroll th,
+.tableScroll td {
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+  padding: 5px;
+  text-align: center;
+  width: 125px;
+  height: 50px;
+}
+
+.tableScroll th:first-child {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: silver;
+}
+
+@media screen and (max-width: 500px) {
+  .tableScroll {
+    width: 100%;
+  }
+}
