@@ -4,6 +4,7 @@ import Result from "./Result";
 import Table from "./Table";
 import Indicator from "./Indicator";
 import Alert from "react-s-alert";
+import Instructions from './Instructions'
 
 const EX_COEFF = 0.3;
 
@@ -310,6 +311,7 @@ class Calculator extends React.Component {
     const { termsInfo } = this.state;
     return (
       <div>
+        <Instructions />
         <CalculatorForm
           TermNumber={termsInfo.length}
           CanBeDowngrade={this.state.CanBeDowngrade}
