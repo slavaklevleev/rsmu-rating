@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
+
+.header {
+  padding: 33px 80px;
+  margin-bottom: 35px;
+  background: rgb(187, 180, 222);
+  box-shadow: 0 0 10px #717171;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 700;
+  font-family: "Play", sans-serif;
+  color: white;
+}
