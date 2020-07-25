@@ -16,7 +16,7 @@ const CalculatorController = () => {
     <div>
       <button onClick={switchShowState} type="submit">
         {" "}
-        Сколько баллов за экзамен нужно набрать, чтобы получить «5» или «4»{" "}
+        Итоговая оценка{" "}
       </button>
       {showState.show && <Calculator />}
     </div>
