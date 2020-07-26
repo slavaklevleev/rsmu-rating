@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ExamCalcForm.module.css";
+import styles from "./styles/ExamCalcForm.module.css";
 import PropTypes from "prop-types";
 
 class ExamCalcForm extends React.Component {
@@ -30,47 +30,50 @@ class ExamCalcForm extends React.Component {
   render() {
     const { WrittenAnswer, OralAnswer, Test, Attendance } = this.props;
     return (
-      <div className={styles.checkboxBlock}>
-        <label>
-          {" "}
-          <input
-            className={styles.checkbox}
-            type="Checkbox"
-            checked={WrittenAnswer}
-            onChange={this.WrittenAnswerHandle}
-          />{" "}
-          <p>Письменный ответ</p>
-        </label>
-        <label>
-          {" "}
-          <input
-            className={styles.checkbox}
-            type="Checkbox"
-            checked={OralAnswer}
-            onChange={this.OralAnswerHandle}
-          />{" "}
-          <p>Устный ответ</p>
-        </label>
-        <label>
-          {" "}
-          <input
-            className={styles.checkbox}
-            type="Checkbox"
-            checked={Test}
-            onChange={this.TestHandle}
-          />{" "}
-          <p>Тест</p>
-        </label>
-        <label>
-          {" "}
-          <input
-            className={styles.checkbox}
-            type="Checkbox"
-            checked={Attendance}
-            onChange={this.AttendanceHandle}
-          />{" "}
-          <p>Посещение</p>
-        </label>
+      <div className={styles.examCalcForm}>
+        <div className={styles.checkboxBlock}>
+          <label>
+            {" "}
+            <input
+              className={styles.checkbox}
+              type="Checkbox"
+              checked={WrittenAnswer}
+              onChange={this.WrittenAnswerHandle}
+            />{" "}
+            <p className={styles.label}>Письменный ответ</p>
+          </label>
+          <label>
+            {" "}
+            <input
+              className={styles.checkbox}
+              type="Checkbox"
+              checked={OralAnswer}
+              onChange={this.OralAnswerHandle}
+            />{" "}
+            <p className={styles.label}>Устный ответ</p>
+          </label>
+          <label>
+            {" "}
+            <input
+              className={styles.checkbox}
+              type="Checkbox"
+              checked={Test}
+              onChange={this.TestHandle}
+            />{" "}
+            <p className={styles.label}>Тест</p>
+          </label>
+          <label>
+            {" "}
+            <input
+              className={styles.checkbox}
+              type="Checkbox"
+              checked={Attendance}
+              onChange={this.AttendanceHandle}
+            />{" "}
+            <p className={styles.label}>Посещение</p>
+          </label>
+        </div>
+        <input type="button" value="Очистить" />
       </div>
     );
   }

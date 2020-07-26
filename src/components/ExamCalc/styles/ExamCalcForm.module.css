@@ -1,0 +1,43 @@
+.examCalcForm {
+  width: fit-content;
+  margin: 15px auto;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #717171;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkboxBlock {
+  display: grid;
+  grid-gap: 15px;
+  width: max-content;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
+  margin-right: 25px;
+}
+
+label {
+  flex-direction: row;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox {
+  margin: 5px;
+}
+
+.label {
+  padding: 0;
+}
+
+@media screen and (max-width: 450px) {
+  .checkboxBlock {
+    grid-template-columns: repeat(1, max-content);
+  }
+}

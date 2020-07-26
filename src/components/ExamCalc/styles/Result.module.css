@@ -1,0 +1,119 @@
+/* const BLOCK_STYLE = {
+    border: "2px solid silver",
+    borderRadius: "5px",
+    padding: "15px",
+    margin: "15px",
+    maxWidth: "420px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    alignItems: "center",
+  };
+  
+  const RESULT_BLOCK_STYLE = {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    alignItems: "center",
+  };
+  
+  const MARK_STYLE = {
+    fontSize: "72px",
+    marginRight: "25px",
+  };
+  
+  const MARK_BLOCK_STYLE = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "250px",
+  }; */
+
+.infoblock {
+  width: 375px;
+  height: fit-content;
+  margin: 15px auto;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #717171;
+  background: rgb(170, 98, 141);
+  background: -moz-linear-gradient(
+    135deg,
+    rgba(170, 98, 141, 1) 25%,
+    rgba(113, 97, 168, 1) 75%
+  );
+  background: -webkit-linear-gradient(
+    135deg,
+    rgba(170, 98, 141, 1) 25%,
+    rgba(113, 97, 168, 1) 75%
+  );
+  background: linear-gradient(
+    135deg,
+    rgba(170, 98, 141, 1) 25%,
+    rgba(113, 97, 168, 1) 75%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#aa628d",endColorstr="#7161a8",GradientType=1);
+}
+
+.header {
+  color: white;
+  padding: 20px 5px;
+  background: rgba(206, 168, 188, 0.85);
+  width: max-content;
+  border-radius: 5px;
+  font-family: "Play", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.content {
+  margin-left: 50px;
+  margin-top: 15px;
+  font-family: "Play", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.result {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-family: "Play", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.paragraphRight {
+  text-align: right;
+  width: min-content;
+}
+a {
+  text-decoration: underline;
+  color: white;
+}
+
+p {
+  padding-top: 10px;
+}
+
+li {
+  line-height: 25px;
+}
+
+@media screen and (max-width: 450px) {
+  .infoblock {
+    width: 290px;
+    padding: 15px 10px;
+  }
+  .content {
+    margin-left: 0px;
+  }
+
+  ol {
+    margin-left: 1.5em;
+  }
+}

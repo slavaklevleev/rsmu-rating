@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Table.module.css";
+import styles from "./styles/Table.module.css";
 import PropTypes from "prop-types";
 
 class Table extends React.Component {
@@ -51,15 +51,12 @@ class Table extends React.Component {
     return (
       <div className={styles.tableScroll}>
         <table>
-          <thead>
             <tr>
               <th></th>
               <th>Балл</th>
               <th>Макс. балл</th>
               <th>Весовой коэф.</th>
             </tr>
-          </thead>
-          <tbody>
             {displayedRows.map((row, i) => (
               <tr key={row}>
                 <th>{row.rowName}</th>
@@ -96,18 +93,18 @@ class Table extends React.Component {
                 </td>
               </tr>
             ))}
-          </tbody>
         </table>
       </div>
     );
   }
 }
 
-// Table.propTypes = {
-//   termsInfo: PropTypes.number,
-//   onScoreChange: PropTypes.func,
-//   onCoefficientChange: PropTypes.func,
-//   onCoefficientBlur: PropTypes.func,
-// };
+Table.propTypes = {
+  rows: PropTypes.object,
+  onScoreChange: PropTypes.func,
+  onMaxScoreChange: PropTypes.func,
+  onCoefficientChange: PropTypes.func,
+  onCoefficientBlur: PropTypes.func,
+};
 
 export default Table;
