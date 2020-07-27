@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Instructions from "./Instructions";
+import styles from "./../../Controllers.module.css";
 
 const InstructionsController = () => {
   const [showState, switchState] = useState({
@@ -14,10 +15,12 @@ const InstructionsController = () => {
 
   return (
     <div>
-      <button onClick={switchShowState} type="submit">
-        {" "}
-        Общая информация{" "}
-      </button>
+      <div className={styles.controller}>
+        <button onClick={switchShowState} type="submit">
+          {" "}
+          Общая информация{" "}
+        </button>
+      </div>
       {showState.show && <Instructions />}
     </div>
   );

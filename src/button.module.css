@@ -1,0 +1,20 @@
+button {
+  background: rgb(206, 168, 188);
+  padding: 10px 20px;
+  margin: 15px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 10px #717171;
+  font-family: "Play", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: white;
+}
+
+button:hover {
+    box-shadow: 0 0 5px #717171;
+}
+
+button:active {
+    box-shadow: 0 0 0px #717171;
+}

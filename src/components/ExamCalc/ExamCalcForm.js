@@ -73,7 +73,7 @@ class ExamCalcForm extends React.Component {
             <p className={styles.label}>Посещение</p>
           </label>
         </div>
-        <input type="button" value="Очистить" />
+        <button className={styles.formButton} onClick={this.CleanHandle}>Очистить</button>
       </div>
     );
   }

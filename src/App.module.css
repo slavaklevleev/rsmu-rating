@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .header {
   padding: 33px 80px;
   margin-bottom: 35px;
@@ -7,9 +12,15 @@
   box-shadow: 0 0 10px #717171;
 }
 
-h1 {
+.h1 {
   font-size: 26px;
   font-weight: 700;
   font-family: "Play", sans-serif;
   color: white;
+}
+
+@media screen and (max-width: 450px) {
+  .header {
+    padding: 33px 10px;
+  }
 }

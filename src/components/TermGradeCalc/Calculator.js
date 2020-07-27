@@ -4,31 +4,29 @@ import Result from "./Result";
 import Table from "./Table";
 import Indicator from "./Indicator";
 import Alert from "react-s-alert";
-import Instructions from './Instructions';
-import styles from './styles/Calculator.module.css';
+import Instructions from "./Instructions";
+import styles from "./styles/Calculator.module.css";
+import Masonry from "react-masonry-css";
 
 const EX_COEFF = 0.3;
 
-const RESULT_STYLE = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "center",
-  flexWrap: "wrap",
+const breakpointColumnsObj = {
+  default: 2,
+  850: 1,
 };
 
 const scoreWithCoeffCount = (score, coefficient1, coefficient2) => {
   return Math.round(score * coefficient1 * coefficient2 * 10000) / 10000;
-}
+};
 
 const ExamScoreWithCoeffCount = (termsInfo) => {
   let ExamScore = 100;
   for (let index = 0; index < termsInfo.length; index++) {
     ExamScore =
-      Math.round((ExamScore - termsInfo[index].scoreWithCoeff) * 10000) /
-      10000;
+      Math.round((ExamScore - termsInfo[index].scoreWithCoeff) * 10000) / 10000;
   }
   return (Math.round(ExamScore * 100) / 100).toFixed(2);
-}
+};
 
 //добавить изменяемый коэффициент2
 const ExamScoreCount = (x, CanBeDowngrade, CanBeIncreased, coeff2) => {
@@ -80,7 +78,7 @@ const ExamScoreCount = (x, CanBeDowngrade, CanBeIncreased, coeff2) => {
       }
     }
   }
-}
+};
 
 class Calculator extends React.Component {
   constructor(props) {
@@ -267,11 +265,6 @@ class Calculator extends React.Component {
     }
 
     newTermsInfo[index].coefficient1 = coefficient;
-    console.log(scoreWithCoeffCount(
-      newTermsInfo[index].score,
-      newTermsInfo[index].coefficient1,
-      newTermsInfo[index].coefficient2
-    ));
     newTermsInfo[index].scoreWithCoeff = scoreWithCoeffCount(
       newTermsInfo[index].score,
       newTermsInfo[index].coefficient1,
@@ -302,7 +295,11 @@ class Calculator extends React.Component {
           onCoefficientBlur={this.CoefficientBlurHandle}
         />
 
-        <div style={RESULT_STYLE}>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className={styles.myMasonryGrid}
+          columnClassName={styles.myMasonryGridColumn}
+        >
           <Result
             mark="5"
             score={ExamScoreCount(
@@ -311,9 +308,9 @@ class Calculator extends React.Component {
               this.state.CanBeIncreased,
               EX_COEFF
             )}
-            scoreWithCoeff={(
-              ExamScoreWithCoeffCount(termsInfo) - 10
-            ).toFixed(2)}
+            scoreWithCoeff={(ExamScoreWithCoeffCount(termsInfo) - 10).toFixed(
+              2
+            )}
           />
 
           <Result
@@ -324,26 +321,32 @@ class Calculator extends React.Component {
               this.state.CanBeIncreased,
               EX_COEFF
             )}
-            scoreWithCoeff={(
-              ExamScoreWithCoeffCount(termsInfo) - 20
-            ).toFixed(2)}
+            scoreWithCoeff={(ExamScoreWithCoeffCount(termsInfo) - 20).toFixed(
+              2
+            )}
           />
-        </div>
+        </Masonry>
 
         <div className={styles.colorExplainBlock}>
           <h3>Пояснение к цветам</h3>
           <div className={styles.colorExplainInner}>
             <div className={styles.colorExplain}>
               <Indicator score={25} />
-              <p className={styles.explanation}>— баллы можно получить без изменения ИР на 2%</p>
+              <p className={styles.explanation}>
+                — баллы можно получить без изменения ИР на 2%
+              </p>
             </div>
             <div className={styles.colorExplain}>
               <Indicator score={20} />
-              <p className={styles.explanation}>— баллы можно получить с изменением ИР на 2%</p>
+              <p className={styles.explanation}>
+                — баллы можно получить с изменением ИР на 2%
+              </p>
             </div>
             <div className={styles.colorExplain}>
               <Indicator score={18} />
-              <p className={styles.explanation}>— такое количество баллов нельзя получить. Никак</p>
+              <p className={styles.explanation}>
+                — такое количество баллов нельзя получить. Никак
+              </p>
             </div>
           </div>
         </div>
@@ -352,4 +355,9 @@ class Calculator extends React.Component {
   }
 }
 
-export {Calculator, scoreWithCoeffCount, ExamScoreWithCoeffCount, ExamScoreCount};
+export {
+  Calculator,
+  scoreWithCoeffCount,
+  ExamScoreWithCoeffCount,
+  ExamScoreCount,
+};

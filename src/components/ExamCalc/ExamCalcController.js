@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ExamCalc from "./ExamCalc";
+import styles from "./../../Controllers.module.css";
 
 const ExamCalcController = () => {
   const [showState, switchState] = useState({
@@ -14,10 +15,13 @@ const ExamCalcController = () => {
 
   return (
     <div>
-      <button onClick={switchShowState} type="submit">
-        {" "}
-        Оценка за экзамен{" "}
-      </button>
+      <div className={styles.controller}>
+        <button onClick={switchShowState} type="submit">
+          {" "}
+          Оценка за экзамен{" "}
+        </button>
+      </div>
+
       {showState.show && <ExamCalc />}
     </div>
   );

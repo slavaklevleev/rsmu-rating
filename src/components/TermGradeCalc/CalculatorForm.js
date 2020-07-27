@@ -35,8 +35,18 @@ class CalculatorForm extends React.Component {
           <p>Количество семестров: {TermNumber}</p>
         </div>
         <div className={styles.buttonBlock}>
-          <button onClick={this.AddTermButtonHandle}>Добавить семестр</button>
-          <button onClick={this.RemoveTermButtonHandle}>Убрать семестр</button>
+          <button
+            className={styles.formButton}
+            onClick={this.AddTermButtonHandle}
+          >
+            Добавить семестр
+          </button>
+          <button
+            className={styles.formButton}
+            onClick={this.RemoveTermButtonHandle}
+          >
+            Убрать семестр
+          </button>
         </div>
         <div className={styles.checkboxBlock}>
           <label className={styles.label}>
@@ -47,7 +57,7 @@ class CalculatorForm extends React.Component {
               checked={CanBeIncreased}
               onChange={this.CanBeIncreasedHandle}
             />{" "}
-              Учесть возможность повышения <br /> итогового рейтинга
+            Учесть возможность повышения <br /> итогового рейтинга
           </label>
           <label className={styles.label}>
             {" "}
@@ -59,9 +69,6 @@ class CalculatorForm extends React.Component {
             />{" "}
             Учесть возможность понижения <br /> итогового рейтинга
           </label>
-        </div>
-        <div>
-          <input type="button" value="Очистить"/>
         </div>
       </div>
     );

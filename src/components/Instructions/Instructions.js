@@ -29,7 +29,7 @@ class Instructions extends React.Component {
         <div className={styles.infoblock}>
           <div className={styles.header}>Где подсчеты?</div>
           <div className={styles.content}>
-            <p>
+            <p className={styles.p}>
               На этой странице есть 2 кнопки - «Оценка за экзамен» и «Итоговая
               оценка». При нажатии на эти кнопки Вы можете открыть или скрыть
               калькулятор.
@@ -39,11 +39,11 @@ class Instructions extends React.Component {
         <div className={styles.infoblock}>
           <div className={styles.header}>Какие данные нужны?</div>
           <div className={styles.content}>
-            <p>
+            <p className={styles.p}>
               Для калькулятора «Оценка за экзамен» Вам нужно ввести балл,
               максимальный балл и весовой коэффициент.
             </p>
-            <p>
+            <p className={styles.p}>
               Для калькулятора «Итоговая оценка» Вам нужно вписать количество
               баллов и весовой коэффициент для каждого семестра.
             </p>
@@ -54,12 +54,12 @@ class Instructions extends React.Component {
             Изменение итогового <br/>рейтинга на 2%
           </div>
           <div className={styles.content}>
-            <p>Если Вы набираете меньше 70% за семестры, то Вас отчисляют.</p>
-            <p>
+            <p className={styles.p}>Если Вы набираете меньше 70% за семестры, то Вас отчисляют.</p>
+            <p className={styles.p}>
               Если Вы набираете меньше 70% за ответ на экзамене, то Вас
               отправляют на комиссию, вне зависимости от рейтинга за семестры.
             </p>
-            <p>
+            <p className={styles.p}>
               В системе предусмотрено добавление или вычитание 2% из итогового
               рейтинга.
             </p>

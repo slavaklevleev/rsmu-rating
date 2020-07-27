@@ -39,6 +39,16 @@
   padding: 0;
 }
 
+.formButton {
+  background: rgb(187, 180, 222);
+  font-size: 14px;
+  box-shadow: 0 0 5px #717171;
+}
+
+.formButton:hover {
+  box-shadow: 0 0 2.5px #717171;
+}
+
 @media screen and (max-width: 450px) {
   .checkboxBlock {
     grid-template-columns: repeat(1, max-content);

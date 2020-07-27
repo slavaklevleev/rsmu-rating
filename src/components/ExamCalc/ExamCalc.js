@@ -4,6 +4,7 @@ import ExamCalcForm from "./ExamCalcForm";
 import Result from "./Result";
 import Alert from "react-s-alert";
 import Instructions from "./Instructions";
+import styles from "./styles/ExamCalc.module.css";
 
 const scoreWithCoeffCount = (score, coeff) => {
   return Math.round(score * coeff * 10000) / 10000;
@@ -74,6 +75,7 @@ const prediction = (state) => {
     }
   }
 };
+
 class ExamCalc extends React.Component {
   constructor(props) {
     super(props);
@@ -527,6 +529,47 @@ class ExamCalc extends React.Component {
   }
 
   render() {
+    let conditionalRender;
+    if (
+      this.state.WrittenAnswer.display ||
+      this.state.OralAnswer.display ||
+      this.state.Test.display ||
+      this.state.Attendance.display
+    ) {
+      conditionalRender = (
+        <React.Fragment>
+          <Table
+            onScoreChange={this.ScoreChangeHandle}
+            onMaxScoreChange={this.MaxScoreChangeHandle}
+            onCoefficientChange={this.CoefficientChangeHandle}
+            onCoefficientBlur={this.CoefficientBlurHandle}
+            rows={this.state}
+          />
+          <Result
+            mark30={(
+              resultCount(
+                this.state.scoreWithCoeffSum,
+                this.state.maxScoreWithCoeffSum
+              ) * 30
+            ).toFixed(2)}
+            mark100={(
+              resultCount(
+                this.state.scoreWithCoeffSum,
+                this.state.maxScoreWithCoeffSum
+              ) * 100
+            ).toFixed(2)}
+            prediction={prediction(this.state)}
+          />
+        </React.Fragment>
+      );
+    } else {
+      conditionalRender = (
+        <p className={styles.conditionalRender}>
+          Необходимо выбрать хотя бы один вид оценивания
+        </p>
+      );
+    }
+
     return (
       <div>
         <Instructions />
@@ -535,33 +578,13 @@ class ExamCalc extends React.Component {
           OralAnswer={this.state.OralAnswer.display}
           Test={this.state.Test.display}
           Attendance={this.state.Attendance.display}
+          onCleanClick={this.CleanHandle}
           onWrittenAnswerChange={this.WrittenAnswerHandle}
           onOralAnswerChange={this.OralAnswerHandle}
           onTestChange={this.TestHandle}
           onAttendanceChange={this.AttendanceHandle}
         />
-        <Table
-          onScoreChange={this.ScoreChangeHandle}
-          onMaxScoreChange={this.MaxScoreChangeHandle}
-          onCoefficientChange={this.CoefficientChangeHandle}
-          onCoefficientBlur={this.CoefficientBlurHandle}
-          rows={this.state}
-        />
-        <Result
-          mark30={(
-            resultCount(
-              this.state.scoreWithCoeffSum,
-              this.state.maxScoreWithCoeffSum
-            ) * 30
-          ).toFixed(2)}
-          mark100={(
-            resultCount(
-              this.state.scoreWithCoeffSum,
-              this.state.maxScoreWithCoeffSum
-            ) * 100
-          ).toFixed(2)}
-          prediction={prediction(this.state)}
-        />
+        {conditionalRender}
       </div>
     );
   }

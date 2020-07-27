@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Calculator } from "./Calculator";
+import styles from "./../../Controllers.module.css";
 
 const CalculatorController = () => {
   const [showState, switchState] = useState({
-    show: true,
+    show: false,
   });
 
   const switchShowState = () => {
@@ -14,10 +15,13 @@ const CalculatorController = () => {
 
   return (
     <div>
-      <button onClick={switchShowState} type="submit">
-        {" "}
-        Итоговая оценка{" "}
-      </button>
+      <div className={styles.controller}>
+        <button onClick={switchShowState} type="submit">
+          {" "}
+          Итоговая оценка{" "}
+        </button>
+      </div>
+
       {showState.show && <Calculator />}
     </div>
   );

@@ -1,26 +1,12 @@
-/* const COLOR_EXPLAIN = {
-    display: "flex",
-    margin: "0px 10px",
-    flexDirection: "row",
-    alignItems: "center",
-    width: "max-content",
-  };
-  
-  const COLOR_EXPLAIN_BLOCK = {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    margin: "auto",
-  };
-  
-  const COLOR_EXPLAIN_INNER_BLOCK = {
-    width: "80%",
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    margin: "auto",
-  }; */
+.myMasonryGrid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  width: auto;
+}
+.myMasonryGridColumn {
+  background-clip: padding-box;
+}
 
 .colorExplainBlock {
   width: 70%;
