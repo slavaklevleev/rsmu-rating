@@ -9,12 +9,12 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-masonry-css": "^1.0.14",
-    "react-s-alert": "^1.4.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-toastify": "^6.0.8"
   },
   "scripts": {
     "start": "node server.js",
-    "build": "webpack",
+    "build": "webpack --mode production",
     "test": "react-scripts test",
     "lint": "eslint './src/**/*.{js,jsx}'",
     "eject": "react-scripts eject"

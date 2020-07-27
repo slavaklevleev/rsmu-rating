@@ -3,7 +3,7 @@ import CalculatorForm from "./CalculatorForm";
 import Result from "./Result";
 import Table from "./Table";
 import Indicator from "./Indicator";
-import Alert from "react-s-alert";
+import { toast } from "react-toastify";
 import Instructions from "./Instructions";
 import styles from "./styles/Calculator.module.css";
 import Masonry from "react-masonry-css";
@@ -27,6 +27,8 @@ const ExamScoreWithCoeffCount = (termsInfo) => {
   }
   return (Math.round(ExamScore * 100) / 100).toFixed(2);
 };
+
+// const notify = () => toast("Wow so easy !");
 
 //добавить изменяемый коэффициент2
 const ExamScoreCount = (x, CanBeDowngrade, CanBeIncreased, coeff2) => {
@@ -143,11 +145,7 @@ class Calculator extends React.Component {
         termsInfo: termsInfo,
       });
     } else {
-      Alert.warning("В таблице максимальное количество семестров", {
-        position: "top-right",
-        effect: "slide",
-        timeout: 5000,
-      });
+      toast.warn("😡 В таблице максимальное количество семестров");
     }
   }
 
@@ -169,11 +167,7 @@ class Calculator extends React.Component {
         termsInfo: termsInfo,
       });
     } else {
-      Alert.warning("В таблице минимальное количество семестров", {
-        position: "top-right",
-        effect: "slide",
-        timeout: 5000,
-      });
+      toast.warn("😡 В таблице минимальное количество семестров");
     }
   }
 
@@ -182,23 +176,9 @@ class Calculator extends React.Component {
     const newTermsInfo = [...termsInfo];
 
     if (score > 100) {
-      Alert.error("Количество баллов не может быть больше 100", {
-        position: "top-right",
-        effect: "slide",
-        timeout: 5000,
-      });
+      toast.error("🙅🏽 Количество баллов не может быть больше 100");
 
       score = 100;
-    }
-
-    if (score < 0) {
-      Alert.error("Количество баллов не может быть меньше 0", {
-        position: "top-right",
-        effect: "slide",
-        timeout: 5000,
-      });
-
-      score = 0;
     }
 
     newTermsInfo[id].score = score;
@@ -217,23 +197,9 @@ class Calculator extends React.Component {
     const newTermsInfo = [...termsInfo];
 
     if (coefficient > 1) {
-      Alert.error("Коэффициент не может быть больше 1", {
-        position: "top-right",
-        effect: "slide",
-        timeout: 5000,
-      });
+      toast.error("🙅🏽 Коэффициент не может быть больше 1");
 
       coefficient = 1;
-    }
-
-    if (coefficient < 0) {
-      Alert.error("Коэффициент не может быть меньше 0", {
-        position: "top-right",
-        effect: "slide",
-        timeout: 5000,
-      });
-
-      coefficient = 0;
     }
 
     newTermsInfo[index].coefficient1 = coefficient;
@@ -255,11 +221,7 @@ class Calculator extends React.Component {
     }
 
     if (count > 1) {
-      Alert.error("Сумма коэффициентов не может быть больше 1", {
-        position: "top-right",
-        effect: "slide",
-        timeout: 5000,
-      });
+      toast.error("🙅🏽 Сумма коэффициентов не может быть больше 1");
 
       coefficient = 0;
     }

@@ -1,12 +1,21 @@
 import React from "react";
 import CalculatorController from "./components/TermGradeCalc/CalculatorController";
-import Alert from "react-s-alert";
-import "react-s-alert/dist/s-alert-default.css";
-import "react-s-alert/dist/s-alert-css-effects/slide.css";
 import InstructionsController from "./components/Instructions/InstructionsController";
 import ExamCalcController from "./components/ExamCalc/ExamCalcController";
 import styles from "./App.module.css";
 import "./button.module.css";
+import { ToastContainer, toast } from "react-toastify";
+import "./ReactToastify.css";
+
+toast.configure({
+  position: "top-right",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: false,
+  progress: undefined,
+});
 
 function App() {
   return (
@@ -17,7 +26,7 @@ function App() {
       <InstructionsController />
       <ExamCalcController />
       <CalculatorController />
-      <Alert stack={{ limit: 3 }} />
+      <ToastContainer limit={3}/>
     </div>
   );
 }

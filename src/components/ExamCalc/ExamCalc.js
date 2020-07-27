@@ -2,7 +2,7 @@ import React from "react";
 import Table from "./Table";
 import ExamCalcForm from "./ExamCalcForm";
 import Result from "./Result";
-import Alert from "react-s-alert";
+import { toast } from "react-toastify";
 import Instructions from "./Instructions";
 import styles from "./styles/ExamCalc.module.css";
 
@@ -397,23 +397,8 @@ class ExamCalc extends React.Component {
     let Test = this.state.Test;
     let Attendance = this.state.Attendance;
 
-    console.log("клэф", coefficient);
     if (coefficient > 1) {
-      Alert.error("Коэффициент не может быть больше 1", {
-        position: "top-right",
-        effect: "slide",
-        timeout: 5000,
-      });
-
-      coefficient = 0;
-    }
-
-    if (coefficient < 0) {
-      Alert.error("Коэффициент не может быть меньше 0", {
-        position: "top-right",
-        effect: "slide",
-        timeout: 5000,
-      });
+      toast.error("🙅🏽 Коэффициент не может быть больше 1")
 
       coefficient = 0;
     }
@@ -500,11 +485,7 @@ class ExamCalc extends React.Component {
       Number(Attendance.coefficient);
 
     if (count > 1) {
-      Alert.error("Сумма коэффициентов не может быть больше 1", {
-        position: "top-right",
-        effect: "slide",
-        timeout: 5000,
-      });
+      toast.error("🙅🏽 Сумма коэффициентов не может быть больше 1")
 
       coefficient = 0;
     }
