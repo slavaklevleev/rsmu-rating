@@ -5,7 +5,7 @@ import ExamCalcController from "./components/ExamCalc/ExamCalcController";
 import styles from "./App.module.css";
 import "./button.module.css";
 import { ToastContainer, toast } from "react-toastify";
-import "./ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure({
   position: "top-right",
