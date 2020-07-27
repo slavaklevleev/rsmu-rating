@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles/ResultInterpretation.module.css";
+import PropTypes from "prop-types";
 
 const ResultInterpretation = ({ score }) => {
   let text = "";
@@ -20,6 +21,10 @@ const ResultInterpretation = ({ score }) => {
       "Вы не можете получить оценку, даже если сдадите экзамен на 100% и преподаватель согласится повысить ваш итоговый рейтинг на 2%.";
   }
   return <p className={styles.resultInterpretation}>{text}</p>;
+};
+
+ResultInterpretation.propTypes = {
+  score: PropTypes.number,
 };
 
 export default ResultInterpretation;
