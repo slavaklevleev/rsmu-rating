@@ -1,15 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
-
-.myMasonryGrid {
-  display: -webkit-box; /* Not needed if autoprefixing */
-  display: -ms-flexbox; /* Not needed if autoprefixing */
-  display: flex;
-  width: auto;
-}
-.myMasonryGridColumn {
-  background-clip: padding-box;
-}
-
 .infoblock {
   width: 375px;
   height: fit-content;
@@ -57,8 +45,8 @@
   text-align: justify;
 }
 
-.p {
-  padding-top: 10px;
+li {
+  line-height: 25px;
 }
 
 @media screen and (max-width: 450px) {
@@ -70,7 +58,7 @@
     margin-left: 0px;
   }
 
-  ol {
+  ul {
     margin-left: 1.5em;
   }
 }

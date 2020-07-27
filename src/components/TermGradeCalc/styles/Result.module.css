@@ -1,16 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
-
-.myMasonryGrid {
-  display: -webkit-box; /* Not needed if autoprefixing */
-  display: -ms-flexbox; /* Not needed if autoprefixing */
-  display: flex;
-  width: auto;
-}
-.myMasonryGridColumn {
-  background-clip: padding-box;
-}
-
-.infoblock {
+.resultBlock {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 90px 275px;
+  grid-template-areas:
+    "mark score" 
+    "mark scoreWithCoeff"
+    "resultInterpretetion resultInterpretetion";
   width: 375px;
   height: fit-content;
   margin: 15px auto;
@@ -36,41 +31,59 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#aa628d",endColorstr="#7161a8",GradientType=1);
 }
 
-.header {
+.mark {
+  grid-area: mark;
   color: white;
   padding: 20px 5px;
+  margin: auto;
   background: rgba(206, 168, 188, 0.85);
   width: max-content;
   border-radius: 5px;
   font-family: "Play", sans-serif;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 48px;
 }
 
-.content {
+.score,
+.scoreWithCoeff {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: white;
-  margin-left: 50px;
-  margin-top: 15px;
   font-family: "Play", sans-serif;
   font-weight: 400;
   font-size: 16px;
-  text-align: justify;
 }
 
-.p {
-  padding-top: 10px;
+.score {
+  grid-area: score;
+}
+
+.scoreWithCoeff {
+  grid-area: scoreWithCoeff;
+}
+
+.header {
+  font-family: "Play", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.resultInterpretetion {
+  color: white;
+  grid-area: resultInterpretetion;
 }
 
 @media screen and (max-width: 450px) {
-  .infoblock {
+  .resultBlock {
     width: 290px;
     padding: 15px 10px;
-  }
-  .content {
-    margin-left: 0px;
-  }
-
-  ol {
-    margin-left: 1.5em;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "mark"
+      "score"
+      "scoreWithCoeff"
+      "resultInterpretetion";
   }
 }

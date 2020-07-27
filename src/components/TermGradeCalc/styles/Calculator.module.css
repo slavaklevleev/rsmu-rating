@@ -1,0 +1,57 @@
+/* const COLOR_EXPLAIN = {
+    display: "flex",
+    margin: "0px 10px",
+    flexDirection: "row",
+    alignItems: "center",
+    width: "max-content",
+  };
+  
+  const COLOR_EXPLAIN_BLOCK = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    margin: "auto",
+  };
+  
+  const COLOR_EXPLAIN_INNER_BLOCK = {
+    width: "80%",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    margin: "auto",
+  }; */
+
+.colorExplainBlock {
+  width: 70%;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #717171;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Play", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.colorExplain {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
+}
+
+.colorExplainInner {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.explanation {
+  margin-left: 10px;
+}

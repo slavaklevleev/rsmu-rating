@@ -91,18 +91,7 @@
   text-align: right;
   width: min-content;
 }
-a {
-  text-decoration: underline;
-  color: white;
-}
 
-p {
-  padding-top: 10px;
-}
-
-li {
-  line-height: 25px;
-}
 
 @media screen and (max-width: 450px) {
   .infoblock {

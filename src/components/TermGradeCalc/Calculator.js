@@ -4,7 +4,8 @@ import Result from "./Result";
 import Table from "./Table";
 import Indicator from "./Indicator";
 import Alert from "react-s-alert";
-import Instructions from './Instructions'
+import Instructions from './Instructions';
+import styles from './styles/Calculator.module.css';
 
 const EX_COEFF = 0.3;
 
@@ -14,34 +15,6 @@ const RESULT_STYLE = {
   justifyContent: "center",
   flexWrap: "wrap",
 };
-
-const COLOR_EXPLAIN = {
-  display: "flex",
-  margin: "0px 10px",
-  flexDirection: "row",
-  alignItems: "center",
-  width: "max-content",
-};
-
-const COLOR_EXPLAIN_BLOCK = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  margin: "auto",
-};
-
-const COLOR_EXPLAIN_INNER_BLOCK = {
-  width: "80%",
-  display: "flex",
-  flexDirection: "row",
-  flexWrap: "wrap",
-  justifyContent: "space-around",
-  margin: "auto",
-};
-
-const EXPLANATION_STYLE = {
-  marginLeft: "10px",
-}
 
 const scoreWithCoeffCount = (score, coefficient1, coefficient2) => {
   return Math.round(score * coefficient1 * coefficient2 * 10000) / 10000;
@@ -357,20 +330,20 @@ class Calculator extends React.Component {
           />
         </div>
 
-        <div style={COLOR_EXPLAIN_BLOCK}>
+        <div className={styles.colorExplainBlock}>
           <h3>Пояснение к цветам</h3>
-          <div style={COLOR_EXPLAIN_INNER_BLOCK}>
-            <div style={COLOR_EXPLAIN}>
+          <div className={styles.colorExplainInner}>
+            <div className={styles.colorExplain}>
               <Indicator score={25} />
-              <p style={EXPLANATION_STYLE}>— баллы можно получить без изменения ИР на 2%</p>
+              <p className={styles.explanation}>— баллы можно получить без изменения ИР на 2%</p>
             </div>
-            <div style={COLOR_EXPLAIN}>
+            <div className={styles.colorExplain}>
               <Indicator score={20} />
-              <p style={EXPLANATION_STYLE}>— баллы можно получить с изменением ИР на 2%</p>
+              <p className={styles.explanation}>— баллы можно получить с изменением ИР на 2%</p>
             </div>
-            <div style={COLOR_EXPLAIN}>
+            <div className={styles.colorExplain}>
               <Indicator score={18} />
-              <p style={EXPLANATION_STYLE}>— такое количество баллов нельзя получить. Никак</p>
+              <p className={styles.explanation}>— такое количество баллов нельзя получить. Никак</p>
             </div>
           </div>
         </div>

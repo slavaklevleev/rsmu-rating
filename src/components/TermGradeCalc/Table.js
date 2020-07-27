@@ -1,14 +1,6 @@
 import React from "react";
-import "./Table.css";
+import styles from "./styles/Table.module.css";
 import PropTypes from "prop-types";
-
-const EXPLANATION_STYLE = {
-  textAlign: "center",
-}
-
-const INPUT_TEXT_STYLE = {
-  width: "60px",
-}
 
 class Table extends React.Component {
   constructor(props) {
@@ -33,46 +25,44 @@ class Table extends React.Component {
   render() {
     return (
       <div>
-        <p style={EXPLANATION_STYLE}>
+        {/* <p className={styles.explanation}>
           Весовой коэффициент #2 равен <b>{this.props.termsInfo[0].coefficient2}</b>
-        </p>
-        <table>
-          <tr>
-            <th>Семестр №</th>
-            <th>Балл</th>
-            <th>Вессовой коэф. #1</th>
-            <th>Балл с учетом весовых коэф.</th>
+        </p> */}
+        <table className={styles.table}>
+          <tr className={styles.tr}>
+            <th className={styles.th}>Семестр №</th>
+            <th className={styles.th}>Балл</th>
+            <th className={styles.th}>Вессовой коэф. #1</th>
+            <th className={styles.th}>Балл с учетом весовых коэф.</th>
           </tr>
 
           {this.props.termsInfo.map((i, index) => (
-            <tr key={i}>
-              <th>
+            <tr className={styles.tr} key={i}>
+              <td className={styles.td}>
                 <p>{i.num}</p>
-              </th>
-              <td>
+              </td>
+              <td className={styles.td}>
                 <input
                   key={index}
-                  className="TableInput"
+                  className={styles.TableInput}
                   id={index}
                   type="text"
-                  style={INPUT_TEXT_STYLE}
                   value={i.score}
                   onChange={this.ScoreChangeHandle}
                 />
               </td>
-              <td>
+              <td className={styles.td}>
                 <input
                   key={index}
-                  className="TableInput"
+                  className={styles.tableInput}
                   id={index}
                   type="text"
-                  style={INPUT_TEXT_STYLE}
                   value={i.coefficient1}
                   onChange={this.CoefficientChangeHandle}
                   onBlur={this.CoefficientBlurHandle}
                 />
               </td>
-              <td>
+              <td className={styles.td}>
                 <p>{i.scoreWithCoeff.toFixed(2)}</p>
               </td>
             </tr>

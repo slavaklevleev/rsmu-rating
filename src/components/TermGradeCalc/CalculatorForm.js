@@ -1,36 +1,6 @@
 import React from "react";
-import PropTypes from 'prop-types';
-
-const BLOCK_STYLE = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  width: "70%",
-  margin: "auto",
-};
-
-const BUTTON_BLOCK_STYLE = {
-  display: "flex",
-}
-
-const CHECKBOX_BLOCK_STYLE = {
-  display: "flex",
-  justifyContent: "center",
-  flexWrap: "wrap",
-  width: "100%",
-  margin: "10px 0px",
-};
-
-const CHECKBOX_LABEL_STYLE = {
-  flexDirection: "row",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-};
-
-const CHECKBOX_STYLE = {
-  margin: "15px",
-}
+import PropTypes from "prop-types";
+import styles from "./styles/CalculatorForm.module.css";
 
 class CalculatorForm extends React.Component {
   constructor(props) {
@@ -58,37 +28,40 @@ class CalculatorForm extends React.Component {
   }
 
   render() {
-    const {TermNumber, CanBeIncreased, CanBeDowngrade} = this.props
+    const { TermNumber, CanBeIncreased, CanBeDowngrade } = this.props;
     return (
-      <div className="termInfo" style={BLOCK_STYLE}>
-        <p>Количество семестров: {TermNumber}</p>
-        <div style={BUTTON_BLOCK_STYLE}>
+      <div className={styles.CalculatorForm}>
+        <div className={styles.termNumber}>
+          <p>Количество семестров: {TermNumber}</p>
+        </div>
+        <div className={styles.buttonBlock}>
           <button onClick={this.AddTermButtonHandle}>Добавить семестр</button>
           <button onClick={this.RemoveTermButtonHandle}>Убрать семестр</button>
         </div>
-        <div style={CHECKBOX_BLOCK_STYLE}>
-          <label style={CHECKBOX_LABEL_STYLE}>
+        <div className={styles.checkboxBlock}>
+          <label className={styles.label}>
             {" "}
             <input
+              className={styles.checkbox}
               type="Checkbox"
               checked={CanBeIncreased}
-              style={CHECKBOX_STYLE}
               onChange={this.CanBeIncreasedHandle}
             />{" "}
-            <p>
               Учесть возможность повышения <br /> итогового рейтинга
-            </p>
           </label>
-          <label style={CHECKBOX_LABEL_STYLE}>
+          <label className={styles.label}>
             {" "}
             <input
+              className={styles.checkbox}
               type="Checkbox"
               checked={CanBeDowngrade}
-              style={CHECKBOX_STYLE}
               onChange={this.CanBeDowngradeHandle}
             />{" "}
             Учесть возможность понижения <br /> итогового рейтинга
           </label>
+        </div>
+        <div>
+          <input type="button" value="Очистить"/>
         </div>
       </div>
     );
@@ -103,5 +76,5 @@ CalculatorForm.propTypes = {
   onRemoveTermButtonClick: PropTypes.func,
   onCanBeDowngradeChange: PropTypes.func,
   onCanBeIncreasedChange: PropTypes.func,
-}
+};
 export default CalculatorForm;

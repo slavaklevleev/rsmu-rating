@@ -32,7 +32,7 @@ class ExamCalcForm extends React.Component {
     return (
       <div className={styles.examCalcForm}>
         <div className={styles.checkboxBlock}>
-          <label>
+          <label className={styles.label}>
             {" "}
             <input
               className={styles.checkbox}
@@ -42,7 +42,7 @@ class ExamCalcForm extends React.Component {
             />{" "}
             <p className={styles.label}>Письменный ответ</p>
           </label>
-          <label>
+          <label className={styles.label}>
             {" "}
             <input
               className={styles.checkbox}
@@ -52,7 +52,7 @@ class ExamCalcForm extends React.Component {
             />{" "}
             <p className={styles.label}>Устный ответ</p>
           </label>
-          <label>
+          <label className={styles.label}>
             {" "}
             <input
               className={styles.checkbox}
@@ -62,7 +62,7 @@ class ExamCalcForm extends React.Component {
             />{" "}
             <p className={styles.label}>Тест</p>
           </label>
-          <label>
+          <label className={styles.label}>
             {" "}
             <input
               className={styles.checkbox}

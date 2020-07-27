@@ -38,12 +38,12 @@ const Instructions = () => {
         <div className={styles.infoblock}>
           <div className={styles.header}>Примечения</div>
           <div className={styles.content}>
-            <p>
+            <p className={styles.p}>
               Для расчётов неважно, как называются виды контроля. Здесь
               предусмотрен расчёт, если в экзамене от двух (например, УО и П) до
               четырёх видов контроля (ПО, УО, Т и П).
             </p>
-            <p>
+            <p className={styles.p}>
               Если Вы хотите, чтобы выбранный вид контроля не учитывался, просто
               поставьте нули.
             </p>

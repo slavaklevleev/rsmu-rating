@@ -3,7 +3,7 @@ import { Calculator } from "./Calculator";
 
 const CalculatorController = () => {
   const [showState, switchState] = useState({
-    show: false,
+    show: true,
   });
 
   const switchShowState = () => {

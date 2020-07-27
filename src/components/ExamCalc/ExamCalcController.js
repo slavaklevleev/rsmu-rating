@@ -3,7 +3,7 @@ import ExamCalc from "./ExamCalc";
 
 const ExamCalcController = () => {
   const [showState, switchState] = useState({
-    show: true,
+    show: false,
   });
 
   const switchShowState = () => {

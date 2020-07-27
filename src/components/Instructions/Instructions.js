@@ -20,7 +20,7 @@ class Instructions extends React.Component {
           <div className={styles.infoblock}>
           <div className={styles.header}>Что это?</div>
           <div className={styles.content}>
-            <p>
+            <p className={styles.p}>
               Это веб-приложение, которое поможет понять, сколько баллов на
               экзамене Вам нужно набрать, чтобы получить желаемую оценку.
             </p>
@@ -70,18 +70,18 @@ class Instructions extends React.Component {
           <div className={styles.content}>
             <ul>
               <li>
-                <a href="http://rsmu.ru/fileadmin/rsmu/img/about_rsmu/normativn_documents/kontrol_uspevaemosti/Polozhenie_o_BRS.pdf?bustcache=1590836026473">
+                <a className={styles.a} href="http://rsmu.ru/fileadmin/rsmu/img/about_rsmu/normativn_documents/kontrol_uspevaemosti/Polozhenie_o_BRS.pdf?bustcache=1590836026473">
                   Положение о БРС
                 </a>
               </li>
               <li>
-                <a href="https://ks.rsmu.ru/">Кабинет студента</a>
+                <a className={styles.a} href="https://ks.rsmu.ru/">Кабинет студента</a>
               </li>
               <li>
-                <a href="https://vk.com/ciom_rnimu">Ссылка на группу</a>
+                <a className={styles.a} href="https://vk.com/ciom_rnimu">Ссылка на группу</a>
               </li>
               <li>
-                <a href="https://t.me/magetm">Связаться с автором в Telegram</a>
+                <a className={styles.a} href="https://t.me/magetm">Связаться с автором в Telegram</a>
               </li>
             </ul>
           </div>

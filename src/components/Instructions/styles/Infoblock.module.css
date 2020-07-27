@@ -6,14 +6,10 @@
   display: flex;
   width: auto;
 }
+
 .myMasonryGridColumn {
   background-clip: padding-box;
 }
-/* .infoblockContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 500px);
-  justify-content: space-around;
-} */
 
 .infoblock {
   width: 375px;
@@ -62,12 +58,12 @@
   text-align: justify;
 }
 
-a {
+.a {
   text-decoration: underline;
   color: white;
 }
 
-p {
+.p {
   padding-top: 10px;
 }
 
@@ -76,12 +72,11 @@ li {
 }
 
 @media screen and (max-width: 450px) {
-    .infoblock {
-        width: 290px;
-        padding: 15px 10px;
-
-    }
-    .content {
-        margin-left: 0px;
-    }
+  .infoblock {
+    width: 290px;
+    padding: 15px 10px;
+  }
+  .content {
+    margin-left: 0px;
+  }
 }

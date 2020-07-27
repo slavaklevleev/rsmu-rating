@@ -1,29 +1,12 @@
-.examCalcForm {
+.CalculatorForm {
   width: fit-content;
-  margin: 15px auto;
+  margin: 30px auto;
+  /* margin-top: 30px; */
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 0 10px #717171;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-
-.checkboxBlock {
-  display: grid;
-  grid-gap: 15px;
-  width: max-content;
-  grid-template-columns: repeat(2, max-content);
-  justify-content: center;
-  margin-right: 25px;
-}
-
-.label {
-  flex-direction: row;
-  width: max-content;
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: "Play", sans-serif;
@@ -31,12 +14,37 @@
   font-size: 14px;
 }
 
-.checkbox {
-  margin: 5px;
+.CalculatorForm > * {
+  margin: 10px 0px;
+}
+
+
+.buttonBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 70%;
+}
+
+.checkboxBlock {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .label {
-  padding: 0;
+  flex-direction: row;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 15px;
+}
+
+.checkbox {
+  margin: 5px;
 }
 
 @media screen and (max-width: 450px) {

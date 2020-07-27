@@ -18,6 +18,10 @@
   border-spacing: 0px;
   table-layout: fixed;
   box-shadow: 0 0 10px #717171;
+  color: white;
+  font-family: "Play", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .tableScroll table {
@@ -44,7 +48,7 @@
 }
 
 .tableScroll th {
-  background: rgb(225, 211, 238);
+  background: rgb(185, 181, 219);
 }
 
 .tableScroll th:first-child {
