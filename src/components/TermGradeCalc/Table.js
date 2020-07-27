@@ -11,15 +11,15 @@ class Table extends React.Component {
   }
 
   ScoreChangeHandle(e) {
-    this.props.onScoreChange(e.target.value, Number(e.target.id));
+    this.props.onScoreChange(e.target.value.replace(/[^0-9+.+,]/g, "").replace(",","."), Number(e.target.id));
   }
 
   CoefficientChangeHandle(e) {
-    this.props.onCoefficientChange(e.target.value, Number(e.target.id));
+    this.props.onCoefficientChange(e.target.value.replace(/[^0-9+.]/g, "").replace(",","."), Number(e.target.id));
   }
 
   CoefficientBlurHandle(e) {
-    this.props.onCoefficientBlur(e.target.value, Number(e.target.id));
+    this.props.onCoefficientBlur(e.target.value.replace(/[^0-9+.+,]/g, "").replace(",","."), Number(e.target.id));
   }
 
   render() {
@@ -54,7 +54,7 @@ class Table extends React.Component {
               <td className={styles.td}>
                 <input
                   key={index}
-                  className={styles.tableInput}
+                  className={styles.TableInput}
                   id={index}
                   type="text"
                   value={i.coefficient1}
