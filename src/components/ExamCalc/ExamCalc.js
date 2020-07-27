@@ -87,6 +87,7 @@ class ExamCalc extends React.Component {
     this.TestHandle = this.TestHandle.bind(this);
     this.AttendanceHandle = this.AttendanceHandle.bind(this);
     this.CoefficientBlurHandle = this.CoefficientBlurHandle.bind(this);
+    this.CleanHandle = this.CleanHandle.bind(this);
 
     this.state = {
       WrittenAnswer: {
@@ -235,6 +236,53 @@ class ExamCalc extends React.Component {
         this.state.Test.maxScoreWithCoeff,
         Attendance.maxScoreWithCoeff
       ),
+    });
+  }
+
+  CleanHandle() {
+    this.setState({
+      WrittenAnswer: {
+        rowName: "Письменный ответ",
+        rowID: 0,
+        display: true,
+        score: 0,
+        maxScore: 0,
+        coefficient: 0,
+        scoreWithCoeff: 0,
+        maxScoreWithCoeff: 0,
+      },
+      OralAnswer: {
+        rowName: "Устный ответ",
+        rowID: 1,
+        display: true,
+        score: 0,
+        maxScore: 0,
+        coefficient: 0,
+        scoreWithCoeff: 0,
+        maxScoreWithCoeff: 0,
+      },
+      Test: {
+        rowName: "Тест",
+        rowID: 2,
+        display: true,
+        score: 0,
+        maxScore: 0,
+        coefficient: 0,
+        scoreWithCoeff: 0,
+        maxScoreWithCoeff: 0,
+      },
+      Attendance: {
+        rowName: "Посещение",
+        rowID: 3,
+        display: true,
+        score: 0,
+        maxScore: 0,
+        coefficient: 0,
+        scoreWithCoeff: 0,
+        maxScoreWithCoeff: 0,
+      },
+      scoreWithCoeffSum: 0,
+      maxScoreWithCoeffSum: 0,
     });
   }
 

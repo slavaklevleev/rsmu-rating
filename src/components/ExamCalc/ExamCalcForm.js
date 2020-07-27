@@ -9,6 +9,7 @@ class ExamCalcForm extends React.Component {
     this.OralAnswerHandle = this.OralAnswerHandle.bind(this);
     this.TestHandle = this.TestHandle.bind(this);
     this.AttendanceHandle = this.AttendanceHandle.bind(this);
+    this.CleanHandle = this.CleanHandle.bind(this);
   }
 
   WrittenAnswerHandle(e) {
@@ -25,6 +26,10 @@ class ExamCalcForm extends React.Component {
 
   AttendanceHandle(e) {
     this.props.onAttendanceChange(e.target.checked);
+  }
+
+  CleanHandle(e) {
+    this.props.onCleanClick(e.target.checked);
   }
 
   render() {
@@ -88,6 +93,7 @@ ExamCalcForm.propTypes = {
   onOralAnswerChange: PropTypes.func,
   onTestChange: PropTypes.func,
   onAttendanceChange: PropTypes.func,
+  onCleanClick: PropTypes.func,
 };
 
 export default ExamCalcForm;
