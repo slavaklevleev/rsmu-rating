@@ -83,6 +83,9 @@ class Instructions extends React.Component {
               <li>
                 <a className={styles.a} href="https://t.me/magetm">Связаться с автором в Telegram</a>
               </li>
+              <li>
+                <a className={styles.a} href="https://t.me/itskleverbaby">Связаться с разработчиком в Telegram</a>
+              </li>
             </ul>
           </div>
         </div>
